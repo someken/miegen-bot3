@@ -1,1 +1,27 @@
+name: Tweet Every Hour
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 1時間ごとに実行 (UTC時間で0分に実行)
+
+jobs:
+  tweet:
+    runs-on: ubuntu-latest  # 実行する環境（Ubuntuを使用）
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2  # リポジトリをクローン
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # 使用するPythonのバージョン
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # 依存関係をインストール
+
+    - name: Run the Python script
+      run: |
+        python your_script.py  # 作成したスクリプトを実行
 
