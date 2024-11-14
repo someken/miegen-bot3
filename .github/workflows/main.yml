@@ -2,11 +2,11 @@ name: Tweet Every Hour
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 1時間ごとに実行 (UTC時間で0分に実行)
+    - cron: '0 * * * *'  # 毎時0分に実行（UTC時間）
 
 jobs:
   tweet:
-    runs-on: ubuntu-latest  # 実行する環境（Ubuntuを使用）
+    runs-on: ubuntu-latest  # Ubuntu環境で実行
 
     steps:
     - name: Checkout repository
@@ -23,5 +23,4 @@ jobs:
 
     - name: Run the Python script
       run: |
-        python your_script.py  # 作成したスクリプトを実行
-
+        python meigen-bot.py  # スクリプトを実行
