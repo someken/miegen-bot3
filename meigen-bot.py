@@ -27,7 +27,7 @@ client = tweepy.Client(
 
 # CSVファイルの読み込み
 # 修正後のファイルパス
-file_path = r"C:\Users\somek\.spyder-py3\名言_500.csv"
+file_path = './名言_500.csv'  # スクリプトとCSVファイルが同じディレクトリにある場合
 
 # CSVの読み込み
 df = pd.read_csv(file_path, encoding='shift_jis')
