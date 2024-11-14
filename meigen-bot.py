@@ -39,7 +39,7 @@ random_name = random.choice(df['Column2'])
 random_job = random.choice(df['Column3'])
 
 # ツイート内容を作成
-tweet_content = f'"{random_quote}" - {random_name}, {random_job}'
+ tweet_content = f'"{random_quote}"\n\n- {random_name},\n\n {random_job}'
 
 # ツイート
 client.create_tweet(text=tweet_content)
