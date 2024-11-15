@@ -3,6 +3,7 @@ name: Tweet Every Hour
 on:
   schedule:
     - cron: '0 * * * *'  # 毎時0分に実行（UTC時間）
+  workflow_dispatch:  # 手動トリガーを追加
 
 jobs:
   tweet:
@@ -10,17 +11,17 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2  # リポジトリをクローン
+      uses: actions/checkout@v3  # 最新バージョンに変更
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3  # 最新バージョンに変更
       with:
         python-version: '3.8'  # 使用するPythonのバージョン
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt  # 依存関係をインストール
+        pip install -r requirements.txt || { echo 'Dependency installation failed'; exit 1; }  # 依存関係をインストール
 
     - name: Run the Python script
       run: |
-        python meigen-bot.py  # スクリプトを実行
+        python -u meigen-bot.py  # スクリプトを実行し、詳細なログを表示
